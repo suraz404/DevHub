@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 // Import brands from Simple Icons (si) or Font Awesome (fa)
