@@ -72,7 +72,7 @@ export default function Footer() {
           </p>
 
           <p className="text-sm text-muted-foreground">
-            Built with ❤️ using Next.js & Tailwind CSS.
+            Built with ❤️ using Next.js & Tailwind
           </p>
         </div>
       </div>
