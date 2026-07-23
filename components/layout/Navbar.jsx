@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container  mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold tracking-tight">
           DevHub
