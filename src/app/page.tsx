@@ -1,5 +1,6 @@
 import Categories from "@/features/categories/Categories";
 import Hero from "@/features/hero/Hero";
+import Tools from "@/features/Tools/Tools";
 import React from "react";
 
 const page = () => {
@@ -10,6 +11,7 @@ const page = () => {
     >
       <Hero />
       <Categories />
+      <Tools />
     </div>
   );
 };
