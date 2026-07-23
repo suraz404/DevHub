@@ -10,18 +10,20 @@ const Tools = () => {
   return (
     <Section>
       <Container>
-        <div className="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-          <div>
-            <h2 className="text-4xl font-bold tracking-tight">
-              Featured Tools
-            </h2>
+        {/* Section Heading */}
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+            Featured Tools
+          </h2>
 
-            <p className="mt-3 max-w-2xl text-muted-foreground">
-              Discover the best tools, frameworks, APIs, libraries and platforms
-              used by modern developers.
-            </p>
-          </div>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Discover the best tools, frameworks, APIs, libraries, and platforms
+            used by modern developers.
+          </p>
+        </div>
 
+        {/* View All */}
+        <div className="mt-1 mb-3 flex justify-end">
           <Link
             href="/tools"
             className="group inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition-all hover:bg-primary hover:text-primary-foreground"
@@ -31,6 +33,7 @@ const Tools = () => {
           </Link>
         </div>
 
+        {/* Carousel */}
         <ToolsCarousel />
       </Container>
     </Section>
