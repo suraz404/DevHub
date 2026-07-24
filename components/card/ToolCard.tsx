@@ -22,16 +22,19 @@ const ToolCard = ({ tool }: ToolCardProps) => {
     <Card className="group h-full overflow-hidden rounded-3xl border bg-background transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-2xl">
       <CardContent className="flex h-full flex-col p-6">
         {/* Logo + Pricing */}
+
         <div className="flex items-start justify-between">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border bg-muted transition-transform duration-300 group-hover:scale-110">
-            <Image
-              src={tool.logo}
-              alt={tool.name}
-              width={40}
-              height={40}
-              className="object-contain"
-            />
-          </div>
+          <Link href={`/tools/${tool.slug}`}>
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border bg-muted transition-transform duration-300 group-hover:scale-110">
+              <Image
+                src={tool.logo}
+                alt={tool.name}
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+            </div>
+          </Link>
 
           <Badge
             className={`rounded-full border-0 ${pricingVariant[tool.pricing]}`}
@@ -39,20 +42,21 @@ const ToolCard = ({ tool }: ToolCardProps) => {
             {tool.pricing}
           </Badge>
         </div>
+        <Link href={`/tools/${tool.slug}`}>
+          {/* Header */}
+          <div className="mt-6 flex items-center gap-2">
+            <h3 className="text-xl font-bold">{tool.name}</h3>
 
-        {/* Header */}
-        <div className="mt-6 flex items-center gap-2">
-          <h3 className="text-xl font-bold">{tool.name}</h3>
+            {tool.verified && (
+              <CheckCircle2 className="h-5 w-5 fill-green-500 text-white" />
+            )}
+          </div>
 
-          {tool.verified && (
-            <CheckCircle2 className="h-5 w-5 fill-green-500 text-white" />
-          )}
-        </div>
-
-        {/* Description */}
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-muted-foreground">
-          {tool.description}
-        </p>
+          {/* Description */}
+          <p className="mt-3 line-clamp-2 text-sm leading-6 text-muted-foreground">
+            {tool.description}
+          </p>
+        </Link>
 
         {/* Tags */}
         <div className="mt-5 flex flex-wrap gap-2">
