@@ -26,7 +26,6 @@ interface PageProps {
 
 export default async function ToolDetailsPage({ params }: PageProps) {
   const { slugs } = await params;
-  console.log("params:", params);
 
   const tool = tools.find((item) => item.slug === slugs);
 
@@ -35,8 +34,22 @@ export default async function ToolDetailsPage({ params }: PageProps) {
   }
 
   const recommendedTools = tools
-    .filter((item) => item.slug !== slugs)
-    .slice(0, 4);
+    .filter((item) => item.slug !== tool.slug)
+    .map((item) => {
+      const sharedTags = item.tags.filter((tag) =>
+        tool.tags.includes(tag),
+      ).length;
+
+      const sameCategory = item.category === tool.category ? 1 : 0;
+
+      return {
+        ...item,
+        score: sharedTags * 10 + sameCategory,
+      };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8);
 
   return (
     <Section className="py-16">
