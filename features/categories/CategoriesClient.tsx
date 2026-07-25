@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "motion/react";
 import { SearchIcon } from "lucide-react";
 
@@ -14,7 +14,7 @@ import { SearchBar } from "./SearchBar";
 import { SortDropdown } from "./SortDropdown";
 import { Stats } from "./Stats";
 import { FeaturedCategories } from "./FeaturedCategories";
-import { CategoriesGrid } from "./CategoriesGrid";
+import CategoriesGrid from "./CategoriesGrid";
 import { Pagination } from "./Pagination";
 import { EmptyState } from "./EmptyState";
 
@@ -43,9 +43,20 @@ export function CategoriesClient() {
   const [sortBy, setSortBy] = useState<SortOption>("featured");
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
     setPage(1);
-  }, [search, selectedFilter, sortBy]);
+  };
+
+  const handleFilterChange = (value: FilterOption) => {
+    setSelectedFilter(value);
+    setPage(1);
+  };
+
+  const handleSortChange = (value: SortOption) => {
+    setSortBy(value);
+    setPage(1);
+  };
 
   const filteredCategories = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -134,15 +145,15 @@ export function CategoriesClient() {
 
       <div className="rounded-3xl border border-border/70 bg-background/70 p-4 shadow-[0_20px_80px_-40px_rgba(15,23,42,0.35)] backdrop-blur sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <SearchBar value={search} onChange={setSearch} />
-          <SortDropdown value={sortBy} onChange={setSortBy} />
+          <SearchBar value={search} onChange={handleSearchChange} />
+          <SortDropdown value={sortBy} onChange={handleSortChange} />
         </div>
 
         <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <CategoryFilter
             options={FILTER_OPTIONS}
             value={selectedFilter}
-            onChange={setSelectedFilter}
+            onChange={handleFilterChange}
           />
           <p className="text-sm text-muted-foreground">
             Showing {filteredCategories.length}{" "}
