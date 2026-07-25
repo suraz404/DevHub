@@ -5,34 +5,46 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { tools } from "@/data/tool";
 
+import ToolsHero from "./ToolsHero";
 import CategoryFilter from "./CategoryFilter";
 import SortDropdown from "./SortDropdown";
 import ToolsGrid from "./ToolsGrid";
-import ToolsHero from "./ToolsHero";
+import ToolsPagination from "./Pagination";
+import NotFound from "@/src/app/not-found";
+
+const ITEMS_PER_PAGE = 8;
 
 export default function ToolsClient() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // URL Values
   const urlSearch = searchParams.get("search") ?? "";
   const category = searchParams.get("category") ?? "All";
   const sort = searchParams.get("sort") ?? "featured";
+  const page = Number(searchParams.get("page") ?? "1");
 
-  // Local Search State
-  const [search, setSearch] = useState(() => urlSearch);
+  const [search, setSearch] = useState(urlSearch);
 
-  // Update URL Params
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setSearch((prev) => (prev === urlSearch ? prev : urlSearch));
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [urlSearch]);
+
   const updateParams = useCallback(
-    (key: string, value: string) => {
+    (updates: Record<string, string>) => {
       const params = new URLSearchParams(searchParams.toString());
 
-      if (value === "" || value === "All") {
-        params.delete(key);
-      } else {
-        params.set(key, value);
-      }
+      Object.entries(updates).forEach(([key, value]) => {
+        if (value === "" || value === "All") {
+          params.delete(key);
+        } else {
+          params.set(key, value);
+        }
+      });
 
       router.replace(`${pathname}?${params.toString()}`, {
         scroll: false,
@@ -41,27 +53,31 @@ export default function ToolsClient() {
     [pathname, router, searchParams],
   );
 
-  // Debounce Search
+  // Debounced search
   useEffect(() => {
+    if (search === urlSearch) return;
+
     const timer = setTimeout(() => {
-      updateParams("search", search);
+      updateParams({
+        search,
+        page: "1",
+      });
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [search, updateParams]);
+  }, [search, urlSearch, updateParams]);
 
-  // Categories
-  const categories = useMemo(() => {
-    return ["All", ...new Set(tools.map((tool) => tool.category))];
-  }, []);
+  const categories = useMemo(
+    () => ["All", ...new Set(tools.map((tool) => tool.category))],
+    [],
+  );
 
-  // Filter + Sort
   const filteredTools = useMemo(() => {
     let filtered = [...tools];
 
-    if (search.trim()) {
-      const query = search.toLowerCase();
+    const query = search.trim().toLowerCase();
 
+    if (query) {
       filtered = filtered.filter((tool) => {
         return (
           tool.name.toLowerCase().includes(query) ||
@@ -100,6 +116,18 @@ export default function ToolsClient() {
     return filtered;
   }, [search, category, sort]);
 
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredTools.length / ITEMS_PER_PAGE),
+  );
+
+  const currentPage = Math.min(page, totalPages);
+
+  const paginatedTools = filteredTools.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
+
   return (
     <>
       <ToolsHero search={search} onSearch={setSearch} />
@@ -107,15 +135,41 @@ export default function ToolsClient() {
       <CategoryFilter
         categories={categories}
         selectedCategory={category}
-        onCategoryChange={(value) => updateParams("category", value)}
+        onCategoryChange={(value) =>
+          updateParams({
+            category: value,
+            page: "1",
+          })
+        }
       />
 
       <SortDropdown
         value={sort}
-        onChange={(value) => updateParams("sort", value)}
+        onChange={(value) =>
+          updateParams({
+            sort: value,
+            page: "1",
+          })
+        }
       />
 
-      <ToolsGrid tools={filteredTools} />
+      {paginatedTools.length === 0 ? (
+        <NotFound />
+      ) : (
+        <>
+          <ToolsGrid tools={paginatedTools} />
+
+          <ToolsPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(newPage) =>
+              updateParams({
+                page: String(newPage),
+              })
+            }
+          />
+        </>
+      )}
     </>
   );
 }

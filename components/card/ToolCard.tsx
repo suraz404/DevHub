@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Guitar } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -81,7 +82,7 @@ const ToolCard = ({ tool }: ToolCardProps) => {
                   target="_blank"
                   className="text-muted-foreground transition hover:text-foreground"
                 >
-                  <Guitar className="h-5 w-5" />
+                  <SiGithub className="h-5 w-5" />
                 </Link>
               )}
 

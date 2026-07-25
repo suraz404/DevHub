@@ -21,7 +21,7 @@ const PopularTags = () => {
       {popularTags.map((tag) => (
         <Link
           key={tag}
-          href={`tools/${tag.toLocaleLowerCase()}`}
+          href={`/tools?search=${encodeURIComponent(tag)}`}
           className="rounded-full border border-border bg-background px-4 py-1.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground"
         >
           {tag}
