@@ -54,7 +54,7 @@ export default function Footer() {
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link
-                      href={link.href}
+                      href={`/categories/${link.href}`}
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.name}

@@ -19,19 +19,28 @@ import { Pagination } from "./Pagination";
 import { EmptyState } from "./EmptyState";
 
 const PAGE_SIZE = 12;
-const FILTER_OPTIONS: ReadonlyArray<CategoryGroup | "All" | "Featured"> = [
+const FILTER_OPTIONS = [
   "All",
   "Featured",
-  "Frontend",
-  "Backend",
-  "AI",
+  "Framework",
+  "CSS",
+  "UI Library",
+  "Animation",
   "Database",
+  "Backend",
+  "Authentication",
+  "AI",
+  "Deployment",
   "Design",
+  "Icons",
   "DevOps",
-  "Hosting",
-  "Mobile",
+  "API",
+  "Language",
+  "State Management",
   "Testing",
-];
+  "Payment",
+  "Productivity",
+] as const;
 
 type SortOption = "featured" | "name-asc" | "name-desc" | "tools-desc";
 
@@ -72,7 +81,7 @@ export function CategoriesClient() {
           ? true
           : selectedFilter === "Featured"
             ? category.featured
-            : category.group === selectedFilter;
+            : category.name === selectedFilter;
 
       return matchesQuery && matchesFilter;
     });

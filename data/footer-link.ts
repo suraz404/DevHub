@@ -2,8 +2,8 @@ export const footerLinks = [
   {
     title: "Discover",
     links: [
-      { name: "UI Libraries", href: "/ui-libraries" },
-      { name: "Open Source", href: "/open-source" },
+      { name: "AI", href: "/ai" },
+      { name: "Design", href: "/design" },
       { name: "AI Tools", href: "/ai-tools" },
       { name: "APIs", href: "/apis" },
     ],

@@ -1,13 +1,22 @@
-export type CategoryGroup =
-  | "Frontend"
-  | "Backend"
-  | "AI"
-  | "Database"
-  | "Design"
-  | "DevOps"
-  | "Hosting"
-  | "Mobile"
-  | "Testing";
+export type CategoryGroup = "Featured";
+("Framework");
+("CSS");
+("UI Library");
+("Animation");
+("Database");
+("Backend");
+("Authentication");
+("AI");
+("Deployment");
+("Design");
+("Icons");
+("DevOps");
+("API");
+("Language");
+("State Management");
+("Testing");
+("Payment");
+("Productivity");
 
 export interface Category {
   id: string;
@@ -17,7 +26,6 @@ export interface Category {
   icon: string;
   href: string;
   color: string;
-  group: CategoryGroup;
   featured: boolean;
   toolCount: number;
   toolCategory: string;
@@ -29,222 +37,248 @@ export const categories: Category[] = [
     slug: "framework",
     name: "Framework",
     description:
-      "Build modern web applications using React, Next.js, Vue, Svelte and more.",
+      "Modern frontend and full-stack frameworks for building web applications.",
     icon: "⚛️",
     href: "/categories/framework",
     color: "from-violet-500 to-purple-500",
-    group: "Frontend",
+
     featured: true,
-    toolCount: 15,
+    toolCount: 18,
     toolCategory: "Framework",
   },
   {
-    id: "ai",
-    slug: "ai",
-    name: "AI",
+    id: "css",
+    slug: "css",
+    name: "CSS",
     description:
-      "Discover copilots, assistants, and automation workflows for modern teams.",
-    icon: "🤖",
-    href: "/categories/ai",
-    color: "from-blue-500 to-cyan-500",
-    group: "AI",
+      "CSS frameworks, preprocessors and utility-first styling libraries.",
+    icon: "🎨",
+    href: "/categories/css",
+    color: "from-sky-500 to-cyan-500",
+
     featured: true,
-    toolCount: 18,
-    toolCategory: "AI",
+    toolCount: 14,
+    toolCategory: "CSS",
+  },
+  {
+    id: "ui-library",
+    slug: "ui-library",
+    name: "UI Library",
+    description:
+      "Reusable UI components and design systems for modern applications.",
+    icon: "🧩",
+    href: "/categories/ui-library",
+    color: "from-indigo-500 to-violet-500",
+
+    featured: true,
+    toolCount: 20,
+    toolCategory: "UI Library",
+  },
+  {
+    id: "animation",
+    slug: "animation",
+    name: "Animation",
+    description:
+      "Animation libraries for smooth interactions and delightful experiences.",
+    icon: "✨",
+    href: "/categories/animation",
+    color: "from-pink-500 to-rose-500",
+
+    featured: true,
+    toolCount: 10,
+    toolCategory: "Animation",
   },
   {
     id: "database",
     slug: "database",
     name: "Database",
     description:
-      "Managed databases, ORMs, and persistence tools for shipping reliable products.",
+      "Databases, ORMs and data platforms for scalable applications.",
     icon: "🗄️",
     href: "/categories/database",
-    color: "from-sky-500 to-indigo-500",
-    group: "Database",
+    color: "from-emerald-500 to-teal-500",
+
+    featured: true,
+    toolCount: 15,
+    toolCategory: "Database",
+  },
+  {
+    id: "backend",
+    slug: "backend",
+    name: "Backend",
+    description: "Server frameworks, APIs and backend development tools.",
+    icon: "⚙️",
+    href: "/categories/backend",
+    color: "from-orange-500 to-red-500",
+
+    featured: true,
+    toolCount: 17,
+    toolCategory: "Backend",
+  },
+  {
+    id: "authentication",
+    slug: "authentication",
+    name: "Authentication",
+    description:
+      "Secure authentication, authorization and user management platforms.",
+    icon: "🔐",
+    href: "/categories/authentication",
+    color: "from-green-500 to-emerald-500",
+
+    featured: true,
+    toolCount: 9,
+    toolCategory: "Authentication",
+  },
+  {
+    id: "ai",
+    slug: "ai",
+    name: "AI",
+    description: "AI models, assistants and APIs that accelerate development.",
+    icon: "🤖",
+    href: "/categories/ai",
+    color: "from-blue-500 to-indigo-500",
+
+    featured: true,
+    toolCount: 22,
+    toolCategory: "AI",
+  },
+  {
+    id: "deployment",
+    slug: "deployment",
+    name: "Deployment",
+    description:
+      "Deploy, host and scale applications with modern cloud platforms.",
+    icon: "🚀",
+    href: "/categories/deployment",
+    color: "from-lime-500 to-green-500",
+
     featured: true,
     toolCount: 12,
-    toolCategory: "Database",
+    toolCategory: "Deployment",
   },
   {
     id: "design",
     slug: "design",
     name: "Design",
     description:
-      "The best design systems, prototyping, and collaboration tools for builders.",
+      "Design, prototyping and collaboration tools for product teams.",
     icon: "🎨",
     href: "/categories/design",
     color: "from-fuchsia-500 to-pink-500",
-    group: "Design",
+
     featured: true,
-    toolCount: 9,
+    toolCount: 11,
     toolCategory: "Design",
   },
   {
-    id: "ui-libraries",
-    slug: "ui-libraries",
-    name: "UI Libraries",
+    id: "icons",
+    slug: "icons",
+    name: "Icons",
     description:
-      "Modern React and CSS component libraries for polished interfaces.",
-    icon: "🎨",
-    href: "/categories/ui-libraries",
-    color: "from-violet-500 to-purple-500",
-    group: "Frontend",
-    featured: true,
-    toolCount: 42,
-    toolCategory: "UI Libraries",
-  },
-  {
-    id: "ai-tools",
-    slug: "ai-tools",
-    name: "AI Tools",
-    description:
-      "Boost productivity with coding assistants, copilots, and research helpers.",
-    icon: "🤖",
-    href: "/categories/ai-tools",
-    color: "from-blue-500 to-cyan-500",
-    group: "AI",
-    featured: true,
-    toolCount: 88,
-    toolCategory: "AI",
-  },
-  {
-    id: "apis",
-    slug: "apis",
-    name: "APIs",
-    description:
-      "Reliable APIs that power everything from onboarding to analytics.",
-    icon: "🔌",
-    href: "/categories/apis",
-    color: "from-green-500 to-emerald-500",
-    group: "Backend",
-    featured: true,
-    toolCount: 64,
-    toolCategory: "API",
-  },
-  {
-    id: "design-systems",
-    slug: "design-systems",
-    name: "Design Systems",
-    description:
-      "Tokens, patterns, and libraries for product teams building consistently.",
-    icon: "🧩",
-    href: "/categories/design-systems",
-    color: "from-fuchsia-500 to-pink-500",
-    group: "Design",
-    featured: true,
-    toolCount: 39,
-    toolCategory: "Design",
-  },
-  {
-    id: "databases",
-    slug: "databases",
-    name: "Databases",
-    description:
-      "Managed data stores and ORMs for modern application backends.",
-    icon: "🗄️",
-    href: "/categories/databases",
-    color: "from-sky-500 to-indigo-500",
-    group: "Database",
-    featured: true,
-    toolCount: 57,
-    toolCategory: "Database",
+      "Beautiful icon packs for web, mobile and desktop applications.",
+    icon: "🖼️",
+    href: "/categories/icons",
+    color: "from-amber-500 to-orange-500",
+
+    featured: false,
+    toolCount: 8,
+    toolCategory: "Icons",
   },
   {
     id: "devops",
     slug: "devops",
     name: "DevOps",
-    description: "Deployment automation, observability, and delivery tooling.",
-    icon: "⚙️",
+    description: "CI/CD, monitoring and infrastructure automation tools.",
+    icon: "🛠️",
     href: "/categories/devops",
-    color: "from-slate-500 to-zinc-600",
-    group: "DevOps",
-    featured: true,
-    toolCount: 44,
+    color: "from-slate-500 to-zinc-700",
+
+    featured: false,
+    toolCount: 13,
     toolCategory: "DevOps",
   },
   {
-    id: "hosting",
-    slug: "hosting",
-    name: "Hosting",
+    id: "api",
+    slug: "api",
+    name: "API",
     description:
-      "Fast, global hosting platforms for apps, APIs, and static content.",
-    icon: "☁️",
-    href: "/categories/hosting",
-    color: "from-emerald-500 to-lime-500",
-    group: "Hosting",
+      "Developer APIs that power payments, messaging, storage and more.",
+    icon: "🔌",
+    href: "/categories/api",
+    color: "from-cyan-500 to-blue-500",
+
     featured: false,
-    toolCount: 33,
-    toolCategory: "Hosting",
+    toolCount: 16,
+    toolCategory: "API",
   },
   {
-    id: "mobile",
-    slug: "mobile",
-    name: "Mobile",
+    id: "language",
+    slug: "language",
+    name: "Language",
     description:
-      "Cross-platform tooling for shipping beautiful mobile products.",
-    icon: "📱",
-    href: "/categories/mobile",
-    color: "from-orange-500 to-amber-500",
-    group: "Mobile",
+      "Programming languages and runtimes for modern software development.",
+    icon: "💻",
+    href: "/categories/language",
+    color: "from-purple-500 to-indigo-500",
+
     featured: false,
-    toolCount: 26,
-    toolCategory: "Mobile",
+    toolCount: 7,
+    toolCategory: "Language",
+  },
+  {
+    id: "state-management",
+    slug: "state-management",
+    name: "State Management",
+    description:
+      "Libraries for managing client-side application state efficiently.",
+    icon: "🧠",
+    href: "/categories/state-management",
+    color: "from-teal-500 to-cyan-500",
+
+    featured: false,
+    toolCount: 10,
+    toolCategory: "State Management",
   },
   {
     id: "testing",
     slug: "testing",
     name: "Testing",
     description:
-      "Automated quality gates for reliable releases and confident shipping.",
+      "Testing frameworks and tools for building reliable applications.",
     icon: "🧪",
     href: "/categories/testing",
-    color: "from-cyan-500 to-sky-500",
-    group: "Testing",
+    color: "from-sky-500 to-cyan-500",
+
     featured: false,
-    toolCount: 18,
+    toolCount: 9,
     toolCategory: "Testing",
   },
   {
-    id: "backend-frameworks",
-    slug: "backend-frameworks",
-    name: "Backend Frameworks",
+    id: "payment",
+    slug: "payment",
+    name: "Payment",
     description:
-      "Scalable server frameworks for APIs, services, and full-stack products.",
-    icon: "🛠️",
-    href: "/categories/backend-frameworks",
-    color: "from-rose-500 to-orange-500",
-    group: "Backend",
+      "Payment gateways and billing platforms for modern applications.",
+    icon: "💳",
+    href: "/categories/payment",
+    color: "from-green-500 to-lime-500",
+
     featured: false,
-    toolCount: 21,
-    toolCategory: "Backend",
+    toolCount: 6,
+    toolCategory: "Payment",
   },
   {
-    id: "frontend-frameworks",
-    slug: "frontend-frameworks",
-    name: "Frontend Frameworks",
+    id: "productivity",
+    slug: "productivity",
+    name: "Productivity",
     description:
-      "High-performance stacks for modern interactive user experiences.",
-    icon: "⚛️",
-    href: "/categories/frontend-frameworks",
-    color: "from-indigo-500 to-blue-500",
-    group: "Frontend",
+      "Tools that help developers collaborate, organize and ship faster.",
+    icon: "📈",
+    href: "/categories/productivity",
+    color: "from-yellow-500 to-orange-500",
+
     featured: false,
-    toolCount: 31,
-    toolCategory: "Frontend",
-  },
-  {
-    id: "open-source",
-    slug: "open-source",
-    name: "Open Source",
-    description:
-      "Popular GitHub projects that power modern developer workflows.",
-    icon: "💻",
-    href: "/categories/open-source",
-    color: "from-orange-500 to-red-500",
-    group: "Frontend",
-    featured: false,
-    toolCount: 27,
-    toolCategory: "Open Source",
+    toolCount: 12,
+    toolCategory: "Productivity",
   },
 ];

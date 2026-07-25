@@ -1,10 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { type CategoryGroup } from "@/data/categories";
+
+type FilterOption =
+  | "All"
+  | "Featured"
+  | "Framework"
+  | "CSS"
+  | "UI Library"
+  | "Animation"
+  | "Database"
+  | "Backend"
+  | "Authentication"
+  | "AI"
+  | "Deployment"
+  | "Design"
+  | "Icons"
+  | "DevOps"
+  | "API"
+  | "Language"
+  | "State Management"
+  | "Testing"
+  | "Payment"
+  | "Productivity";
 
 interface CategoryFilterProps {
-  options: ReadonlyArray<CategoryGroup | "All" | "Featured">;
-  value: CategoryGroup | "All" | "Featured";
-  onChange: (value: CategoryGroup | "All" | "Featured") => void;
+  options: readonly FilterOption[];
+  value: FilterOption;
+  onChange: (value: FilterOption) => void;
 }
 
 export function CategoryFilter({
@@ -26,10 +47,10 @@ export function CategoryFilter({
             key={option}
             type="button"
             variant={isActive ? "default" : "outline"}
-            className={`rounded-full px-3 py-1.5 text-sm transition-all ${
+            className={`rounded-full px-4 py-2 text-sm transition-all ${
               isActive
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "hover:bg-muted hover:text-foreground"
+                ? "bg-primary text-primary-foreground shadow-md"
+                : "hover:bg-muted"
             }`}
             role="tab"
             aria-selected={isActive}
