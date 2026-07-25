@@ -1,36 +1,222 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DevHub
 
-## Getting Started
+A modern developer resource platform built with **Next.js 16**, **React 19**, **TypeScript**, **Tailwind CSS**, and **shadcn/ui**.
 
-First, run the development server:
+DevHub is a curated hub for developers to discover the best frameworks, libraries, APIs, AI tools, design resources, deployment platforms, and other tools that help build modern applications faster.
+
+---
+
+## ✨ Features
+
+* 🔍 Powerful search for developer tools
+* 🗂️ Browse tools by category
+* 📄 Dynamic Tool Details pages
+* 📚 Dynamic Category pages
+* 🎠 Featured tools carousel
+* ⚡ Fast App Router architecture
+* 📱 Fully responsive design
+* 🌙 Dark & Light mode support
+* 🎨 Modern UI with Tailwind CSS & shadcn/ui
+* ✨ Smooth animations using Framer Motion
+* 🔖 SEO-friendly dynamic metadata
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js 16 (App Router)
+* React 19
+* TypeScript
+* Tailwind CSS v4
+* shadcn/ui
+* Lucide React
+* Framer Motion
+
+### Data
+
+* Local TypeScript data
+* Dynamic Routing
+* Dynamic Metadata API
+
+---
+
+## 📂 Folder Structure
+
+```text
+src
+│
+├── app
+│   ├── categories
+│   │   └── [category]
+│   ├── tools
+│   │   └── [slug]
+│   ├── about
+│   ├── contact
+│   └── page.tsx
+│
+├── components
+│   ├── card
+│   ├── common
+│   └── ui
+│
+├── data
+│   ├── categories.ts
+│   └── tool.ts
+│
+├── features
+│   ├── hero
+│   ├── categories
+│   ├── tools
+│   └── footer
+│
+├── lib
+│
+└── styles
+```
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/suraz404/devhub.git
+```
+
+Navigate to the project:
+
+```bash
+cd devhub
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📄 Pages
 
-To learn more about Next.js, take a look at the following resources:
+### 🏠 Home
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Hero Section
+* Featured Categories
+* Featured Tools
+* Footer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 📚 Categories
 
-## Deploy on Vercel
+* Search
+* Category Filters
+* Sorting
+* Pagination
+* Dynamic Category Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🛠️ Tools
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Search
+* Category Filtering
+* Sorting
+* Tool Detail Pages
+
+---
+
+## 📁 Dynamic Routes
+
+```text
+/
+/tools
+/tools/[slug]
+/categories
+/categories/[category]
+```
+
+---
+
+## 🗂️ Categories
+
+* Framework
+* CSS
+* UI Library
+* Animation
+* Database
+* Backend
+* Authentication
+* AI
+* Deployment
+* Design
+* Icons
+* DevOps
+* API
+* Language
+* State Management
+* Testing
+* Payment
+* Productivity
+
+---
+
+## 🎯 Planned Features
+
+* User Authentication
+* Save Favorite Tools
+* Community Reviews
+* Tool Submission System
+* Admin Dashboard
+* PostgreSQL + Prisma
+* Server Actions
+* AI-Powered Recommendations
+* Advanced Filtering
+* Global Search
+* Newsletter
+* Blog
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork this repository.
+2. Create a new feature branch.
+3. Commit your changes.
+4. Push your branch.
+5. Open a Pull Request.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 👨‍💻 Author
+
+**Suraz Agrahari**
+
+BSc CSIT Student • Full Stack Developer
+
+* GitHub: https://github.com/suraz404
+
+---
+
+If you found this project helpful, consider giving it a ⭐ on GitHub!
+
